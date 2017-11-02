@@ -1,17 +1,43 @@
 <div class="page-header">
-  <h1>
-    <%= @idea.title %>
-  </h1>
-  <br>
-  <h3>
-    <%= @idea.description %>
-  </h3>
+  <div class="panel panel-default" style="color: black;">
+    <div class="panel-heading">
+    <strong>Title:</strong> <%= @idea.title %>
+    </div>
+    <div class="panel-body">
+    <strong>Description:</strong> <%= @idea.description %>
+    </div>
+  </div>
 </div>
 
+<div class="col-sm-4">
+  <div class="btn-group">
+  <%= link_to like_idea_path(@idea), method: :put, class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-thumbs-up">
+  </span> Like <%= @idea.get_likes.size %>
+  <% end %>
+  <%= link_to dislike_idea_path(@idea), method: :put, class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-thumbs-down">
+  </span> Dislike <%= @idea.get_dislikes.size %>
+  <% end %>
+  </div>
+</div>
+
+<div class="col-sm-4">
+
+</div>
 
 <% if @idea.user == current_user %>
-  <div class="btn-group">
-    <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-default" %>
-		<%= link_to 'Destroy', @idea, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+<div class="col-sm-4">
+  <div class="btn-group pull-right">
+    <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-warning" %>
+		<%= link_to 'Destroy', @idea, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <%= link_to "Back", :back , class: "btn btn-default"%>
   </div>
+</div>
+<% else %>
+<div class="col-sm-4">
+  <div class="btn-group pull-right">
+    <%= link_to "Back", :back , class: "btn btn-default"%>
+  </div>
+</div>
 <% end %>

@@ -1,8 +1,42 @@
 <% @ideas.each do |idea| %>
+
+<script>
+$("button").click(function() {
+  $( "p" ).toggle();
+  $(this).text(function(i, text){
+         return text === "View" ? "Hide" : "View";
+     })
+});
+</script>
+
   <div class="link row clearfix">
+    <!-- Title -->
     <h2>
       <%= link_to idea.title, idea %><br>
-      <small class="author">Submitted <%= time_ago_in_words(idea.created_at) %> ago by <%= idea.user.email %></small>
     </h2>
+    <!-- Only show if part of group -->
+    <p><%= idea.description %></p>
+    <p style="display: none"></p>
+    <!-- Status -->
+  <div class="row">
+    <div class="col-sm-8">
+      <small class="author">Submitted <%= time_ago_in_words(idea.created_at) %> ago by <%= idea.user.email %></small>
+    </div>
+    <!-- Buttons -->
+    <div class="col-sm-4">
+      <div class="btn-group pull-right">
+        <button class="btn btn-success btn-sm">Hide</button>
+        <%= link_to like_idea_path(idea), method: :put, class: "btn btn-primary btn-sm" do %>
+        <span class="glyphicon glyphicon-thumbs-up">
+        </span> Like <%= idea.get_likes.size %>
+        <% end %>
+        <%= link_to dislike_idea_path(idea), method: :put, class: "btn btn-danger btn-sm" do %>
+        <span class="glyphicon glyphicon-thumbs-down">
+        </span> Dislike <%= idea.get_dislikes.size %>
+        <% end %>
+      </div>
+
+      </div>
+    </div>
   </div>
   <% end %>

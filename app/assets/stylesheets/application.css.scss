@@ -17,6 +17,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+	/*Transparent film on BG to appear darker*/
+	background: linear-gradient(
+			rgba(0,0,0, 0.7),
+			rgba(0,0,0, 0.7)
+	), url(space.jpg) no-repeat center center fixed;
+	color: white;
+}
+
 #logo {
 	font-size: 26px;
 	font-weight: 700;
@@ -56,3 +65,5 @@
 		}
 	}
 }
+
+.div.hidden { display: none; }
