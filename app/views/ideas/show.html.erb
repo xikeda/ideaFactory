@@ -10,6 +10,7 @@
 
 
 <div class="col-sm-4">
+
   <div class="btn-group">
   <%= link_to like_idea_path(@idea), method: :put, class: "btn btn-default btn-sm" do %>
   <span class="glyphicon glyphicon-thumbs-up">
@@ -23,7 +24,7 @@
 </div>
 
 <div class="col-sm-4">
-
+<small class="author">Submitted <%= time_ago_in_words(@idea.created_at) %> ago by <%= @idea.user.name %></small>
 </div>
 
 <% if @idea.user == current_user %>

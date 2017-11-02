@@ -20,7 +20,7 @@ $("button").click(function() {
     <!-- Status -->
   <div class="row">
     <div class="col-sm-8">
-      <small class="author">Submitted <%= time_ago_in_words(idea.created_at) %> ago by <%= idea.user.email %></small>
+      <small class="author">Submitted <%= time_ago_in_words(idea.created_at) %> ago by <%= idea.user.name %></small>
     </div>
     <!-- Buttons -->
     <div class="col-sm-4">
