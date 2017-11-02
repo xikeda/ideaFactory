@@ -1,4 +1,4 @@
-<div class="page-header">
+
   <div class="panel panel-default" style="color: black;">
     <div class="panel-heading">
     <strong>Title:</strong> <%= @idea.title %>
@@ -7,7 +7,7 @@
     <strong>Description:</strong> <%= @idea.description %>
     </div>
   </div>
-</div>
+
 
 <div class="col-sm-4">
   <div class="btn-group">
@@ -40,4 +40,20 @@
     <%= link_to "Back", :back , class: "btn btn-default"%>
   </div>
 </div>
+<% end %>
+<br>
+<br>
+<br>
+<h4 class="comments_title">
+  <%= @idea.comments.count %> Comments
+</h4>
+<div id="comments">
+  <%= render :partial => @idea.comments %>
+</div>
+<%= simple_form_for [@idea, Comment.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
 <% end %>

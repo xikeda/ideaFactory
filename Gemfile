@@ -60,3 +60,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'acts_as_votable'
+
+gem 'simple_form'
+
+gem 'record_tag_helper'
